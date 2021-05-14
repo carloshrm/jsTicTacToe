@@ -1,0 +1,56 @@
+
+body {
+  margin: 0;
+  background-color: darkslategrey;
+}
+#game_board {
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  margin: 1rem;
+  border-radius: 2%;
+  background-color: rgb(56, 56, 56);
+  place-items: center stretch;
+}
+.board_spot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30%;
+  margin: 0.5em;
+  background-color: orange;
+  border-radius: 3%;
+}
+
+.icon{
+    background-color: black;
+    position: fixed;
+    /* top: 300px;
+    left: 300px; */
+    width: 2.5%;
+    height: 12%;
+    border-radius: 50%;
+    
+    
+}
+#left{
+  transform: rotate(45deg);
+}
+#right{
+  transform: rotate(-45deg);
+}
+#circle{
+  width: 16%;
+  height: 9%;
+}
+#circle::after {
+  position: fixed;
+  content: "";
+  width: 16%;
+  height: 9%;
+  border-radius: 50%;
+  transform: scale(0.8);
+  background-color: orange;
+  
+}
