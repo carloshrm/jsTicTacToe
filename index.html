@@ -9,10 +9,12 @@
   </head>
   <body>
     <p>Tic-Tac-Toe!</p>
-    <button id="reset">Reset</button>
-    <button id="start">Start</button>
-    <input class='player_in' id="player1_name" type="text" />
-    <input class='player_in' id="player2_name" type="text" />
+    <div id="control_container">
+      <button id="reset">Reset</button>
+      <button id="start">Start</button>
+      <input class="player_in" id="player1_name" type="text" />
+      <input class="player_in" id="player2_name" type="text" />
+    </div>
     <div id="game_board">
       <div class="board_spot" id="0"></div>
       <div class="board_spot" id="1"></div>
@@ -23,6 +25,9 @@
       <div class="board_spot" id="6"></div>
       <div class="board_spot" id="7"></div>
       <div class="board_spot" id="8"></div>
+    </div>
+    <div id="footer">
+      <p id="results"></p>
     </div>
   </body>
   <script src="game.js"></script>
