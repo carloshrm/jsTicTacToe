@@ -1,38 +1,57 @@
 
 body {
   margin: 0;
-  background-color: darkslategrey;
+  background-color: rgb(164, 201, 201);
+  font-size: 16px;
 }
+input {
+  margin: 0.2rem;  
+}
+
+
+
+#control_container {
+  display: block;    
+  align-items: center;  
+  justify-content: stretch;
+  text-align: center;
+  max-width: min-content;  
+  background-color: antiquewhite;
+  border-radius: 5%;
+  align-self: center;
+  padding: 0.5rem; 
+  margin: auto; 
+  margin-bottom: 2rem;
+}
+
 #game_board {
   display: grid;
-  padding: 1rem;
+  padding: 1%;
+  
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  margin: 1rem;
+  margin: auto;
   border-radius: 2%;
-  background-color: rgb(56, 56, 56);
-  place-items: center stretch;
+  background-color: transparent;
+  max-width: max-content;
 }
 .board_spot {
-  display: flex;
-  align-items: center;
+  display: flex; 
+  align-items: center;  
   justify-content: center;
-  padding: 30%;
-  margin: 0.5em;
-  background-color: orange;
-  border-radius: 3%;
+  width: 10rem;
+  height: 10rem;
+  margin: 0.2rem;
+  background-color: orange;  
 }
 
 .icon{
+  flex: 1;
     background-color: black;
-    position: fixed;
-    /* top: 300px;
-    left: 300px; */
-    width: 2.5%;
-    height: 12%;
-    border-radius: 50%;
-    
-    
+    position: absolute;
+    width: 0.5em;
+    height: 8em;
+    border-radius: 50%;   
 }
 #left{
   transform: rotate(45deg);
@@ -41,16 +60,15 @@ body {
   transform: rotate(-45deg);
 }
 #circle{
-  width: 16%;
-  height: 9%;
+  width: 8em;
+  height: 8em;
 }
 #circle::after {
-  position: fixed;
+  position: absolute;
   content: "";
-  width: 16%;
-  height: 9%;
+    width: 8em;
+    height: 8em;
   border-radius: 50%;
   transform: scale(0.8);
-  background-color: orange;
-  
+  background-color: orange;  
 }
