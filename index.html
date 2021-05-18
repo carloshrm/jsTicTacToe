@@ -8,17 +8,15 @@
     <title>Tic-Tac-Toe!</title>
   </head>
   <body>
-    <h1>Tic-Tac-Toe!</h1>
     <div id="control_container">
+      <h1>Tic-Tac-Toe!</h1>
+      <div class="player_in">
+        <input id="player1_name" type="text" value="Player 1" />
+        <span>vs.</span>
+        <input id="player2_name" type="text" value="Player 2"/>
+      </div>
       <div>
         <button id="reset">Reset</button>
-        <button id="start">Start</button>
-      </div>
-      <div class="player_in">
-        <label for="player1_name">Player 1:</label>
-        <input id="player1_name" type="text" />
-        <label for="player2_name">Player 2:</label>
-        <input id="player2_name" type="text" />
       </div>
     </div>
     <div id="game_board">
@@ -33,7 +31,7 @@
       <div class="board_spot" id="8"></div>
     </div>
     <div id="footer">
-      <p id="results">result</p>
+      <p id="results"></p>
     </div>
   </body>
   <script src="game.js"></script>

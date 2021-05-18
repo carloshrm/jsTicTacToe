@@ -5,43 +5,51 @@ body {
   font-size: 16px;
 }
 input {
-  margin: 0.2rem;  
+  margin: 1em;
+  padding: 0.2em 0em;
+  text-align: center;
+}
+button{
+  padding: 0.5em 2em;
 }
 
-
-
 #control_container {
-  display: block;    
-  align-items: center;  
-  justify-content: stretch;
+  display: flex;    
+  flex-direction: column;
   text-align: center;
-  max-width: min-content;  
+  max-width: 50vw;
   background-color: antiquewhite;
   border-radius: 5%;
   align-self: center;
   padding: 0.5rem; 
-  margin: auto; 
-  margin-bottom: 2rem;
+  margin: 1em auto 0 auto;
 }
 
 #game_board {
   display: grid;
-  padding: 1%;
-  
+  padding: 1em;  
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   margin: auto;
-  border-radius: 2%;
   background-color: transparent;
   max-width: max-content;
 }
+
+#footer{
+  display: grid;
+  background-color: aquamarine;
+  max-width: 50vw;
+  justify-content: center;
+  margin: auto;
+}
+
 .board_spot {
   display: flex; 
   align-items: center;  
   justify-content: center;
-  width: 10rem;
-  height: 10rem;
-  margin: 0.2rem;
+  width: 10em;
+  height: 10em;
+  margin: 0.2em;
   background-color: orange;  
 }
 
