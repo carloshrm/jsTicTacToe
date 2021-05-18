@@ -3,13 +3,13 @@ const dom = {
   boardSquare: document.querySelectorAll('.board_spot'),
   board_HTML: document.getElementById('game_board'),
   name_input: document.querySelectorAll('.player_in input'),
-  result_out: document.getElementById('results'),
+  result_out: document.getElementById('footer'),
 };
 
 const Board = () => {
   let spots = {};
   let plays = 0;
-
+  
   const checkWin = () => {
     const winCases = [
       [0, 1, 2],
@@ -47,7 +47,7 @@ const Board = () => {
     target.innerHTML = type === 'x' ? cross : circle;
   };
 
-  return { spots, setIcon, plays, checkWin };
+  return { spots, setIcon, checkWin };
 };
 
 const Players = () => {
@@ -86,10 +86,10 @@ const gameSetup = () => {
       dom.result_out.innerText = "It's a draw. Reset to play again.";
     } else if (result === 'win') {
       dom.result_out.innerText = `${name} has won! Reset to play again.`;
+      dom.result_out.style.backgroundColor = '#ffee00'
       dom.board_HTML.removeEventListener('click', makePlay);
     }
   }
-
   dom.board_HTML.addEventListener('click', makePlay);
   dom.result_out.innerText = 'Click a spot on the board to play!';
   return { playerTurn, board, players };
@@ -100,7 +100,7 @@ const gameSetup = () => {
   function reset() {
     dom.boardSquare.forEach((sqr) => (sqr.innerHTML = ''));
     dom.name_input.forEach((x) => (x.value = x.defaultValue));
-    dom.result_out.innerText = '';
+    dom.result_out.style.backgroundColor = ''
     myGame = gameSetup();    
   }
   myGame = gameSetup();

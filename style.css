@@ -1,82 +1,95 @@
-
-body {
+@import url('https://fonts.googleapis.com/css2?family=Caveat&display=swap');
+* {
   margin: 0;
-  background-color: rgb(164, 201, 201);
+  padding: 0;
+  font-family: 'Caveat', cursive;
   font-size: 16px;
+}
+h1,
+span {
+  font-size: 2em;
+}
+body {
+  background-color: #68788c;
+  place-items: center;
 }
 input {
   margin: 1em;
   padding: 0.2em 0em;
   text-align: center;
+  font-size: 1em;
 }
-button{
+button {
   padding: 0.5em 2em;
 }
 
 #control_container {
-  display: flex;    
+  display: flex;
   flex-direction: column;
   text-align: center;
   max-width: 50vw;
-  background-color: antiquewhite;
-  border-radius: 5%;
-  align-self: center;
-  padding: 0.5rem; 
+  background-color: #979da6;
+  border-radius: 1em;
+  padding: 0.5rem;
   margin: 1em auto 0 auto;
 }
 
 #game_board {
   display: grid;
-  padding: 1em;  
+  padding: 0.8em;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  margin: auto;
-  background-color: transparent;
+  margin: 1em auto;
+  border: solid 2px #ffee00;
+  background-color: #979da6;
   max-width: max-content;
 }
 
-#footer{
+#footer {
   display: grid;
-  background-color: aquamarine;
+  font-weight: bold;  
+  background-color: #979da6;
   max-width: 50vw;
   justify-content: center;
   margin: auto;
+  border-radius: 1em;
+  padding: 0.5em;
 }
 
 .board_spot {
-  display: flex; 
-  align-items: center;  
+  display: flex;
+  align-items: center;
   justify-content: center;
   width: 10em;
   height: 10em;
   margin: 0.2em;
-  background-color: orange;  
+  background-color: #ffee00;
 }
 
-.icon{
+.icon {
   flex: 1;
-    background-color: black;
-    position: absolute;
-    width: 0.5em;
-    height: 8em;
-    border-radius: 50%;   
+  background-color: black;
+  position: absolute;
+  width: 0.8em;
+  height: 8em;
 }
-#left{
+#left {
   transform: rotate(45deg);
 }
-#right{
+#right {
   transform: rotate(-45deg);
 }
-#circle{
+#circle {
   width: 8em;
   height: 8em;
+  border-radius: 50%;
 }
 #circle::after {
   position: absolute;
-  content: "";
-    width: 8em;
-    height: 8em;
+  content: '';
+  width: 8em;
+  height: 8em;
   border-radius: 50%;
   transform: scale(0.8);
-  background-color: orange;  
+  background-color: #ffee00;
 }
