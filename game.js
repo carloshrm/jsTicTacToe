@@ -87,6 +87,7 @@ const gameSetup = () => {
     } else if (result === 'win') {
       dom.result_out.innerText = `${name} has won! Reset to play again.`;
       dom.result_out.style.backgroundColor = '#ffee00'
+      dom.clearButton.style.backgroundColor = '#ffee00'
       dom.board_HTML.removeEventListener('click', makePlay);
     }
   }
@@ -101,6 +102,7 @@ const gameSetup = () => {
     dom.boardSquare.forEach((sqr) => (sqr.innerHTML = ''));
     dom.name_input.forEach((x) => (x.value = x.defaultValue));
     dom.result_out.style.backgroundColor = ''
+    dom.clearButton.style.backgroundColor = ''
     myGame = gameSetup();    
   }
   myGame = gameSetup();

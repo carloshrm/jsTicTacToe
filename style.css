@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   font-family: 'Caveat', cursive;
-  font-size: 16px;
+  font-size: 12px;
 }
 h1,
 span {
@@ -14,13 +14,16 @@ body {
   place-items: center;
 }
 input {
-  margin: 1em;
-  padding: 0.2em 0em;
+  margin: 2%;
+  padding: 0 0.5rem;
   text-align: center;
-  font-size: 1em;
+  font-size: 1.5rem;
 }
 button {
-  padding: 0.5em 2em;
+  padding: 0.5rem 2rem;
+  margin-top: 0.5rem;
+  background-color: white;
+  border: none;  
 }
 
 #control_container {
@@ -29,17 +32,17 @@ button {
   text-align: center;
   max-width: 50vw;
   background-color: #979da6;
-  border-radius: 1em;
+  border-radius: 1rem;
   padding: 0.5rem;
-  margin: 1em auto 0 auto;
+  margin: 1rem auto 0 auto;
 }
 
 #game_board {
   display: grid;
-  padding: 0.8em;
+  padding: 0.8rem;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  margin: 1em auto;
+  margin: 1rem auto;
   border: solid 2px #ffee00;
   background-color: #979da6;
   max-width: max-content;
@@ -52,17 +55,17 @@ button {
   max-width: 50vw;
   justify-content: center;
   margin: auto;
-  border-radius: 1em;
-  padding: 0.5em;
+  border-radius: 1rem;
+  padding: 0.5rem;
 }
 
 .board_spot {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 10em;
-  height: 10em;
-  margin: 0.2em;
+  width: 10rem;
+  height: 10rem;
+  margin: 0.2rem;
   background-color: #ffee00;
 }
 
@@ -70,8 +73,8 @@ button {
   flex: 1;
   background-color: black;
   position: absolute;
-  width: 0.8em;
-  height: 8em;
+  width: 0.8rem;
+  height: 8rem;
 }
 #left {
   transform: rotate(45deg);
@@ -80,15 +83,15 @@ button {
   transform: rotate(-45deg);
 }
 #circle {
-  width: 8em;
-  height: 8em;
+  width: 8rem;
+  height: 8rem;
   border-radius: 50%;
 }
 #circle::after {
   position: absolute;
   content: '';
-  width: 8em;
-  height: 8em;
+  width: 8rem;
+  height: 8rem;
   border-radius: 50%;
   transform: scale(0.8);
   background-color: #ffee00;
