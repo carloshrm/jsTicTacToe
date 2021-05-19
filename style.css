@@ -23,13 +23,18 @@ input {
   font-size: 1.5rem;  
 }
 button {
-  padding: 0.4rem 3rem;
+  padding: 0.2rem 2rem;
   font-size: 1.5rem;  
-  margin: 1rem 0;
-  
+  margin: 0.2rem;    
   background-color: white;
   border: none;  
 }
+
+#button_container{
+  display: flex;
+  margin: 0.1rem;  
+}
+
 
 #control_container {
   display: flex;
