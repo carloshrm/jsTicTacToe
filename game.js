@@ -16,23 +16,23 @@ const Board = () => {
   let spots = {};
   let plays = 0;
 
-  const checkWin = () => {
-    const winCases = [
-      [0, 1, 2],
-      [3, 4, 5],
-      [6, 7, 8],
-      [0, 3, 6],
-      [1, 4, 7],
-      [2, 5, 8],
-      [0, 4, 8],
-      [2, 4, 6],
-    ];
+  const winCases = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+  const checkWin = (myBoard = spots) => {
     plays++;
     for (let i = 0; i < winCases.length; i++) {
-      if (spots[winCases[i][0]] === undefined) continue;
+      if (myBoard[winCases[i][0]] === undefined) continue;
       if (
-        spots[winCases[i][0]] === spots[winCases[i][1]] &&
-        spots[winCases[i][0]] === spots[winCases[i][2]]
+        myBoard[winCases[i][0]] === myBoard[winCases[i][1]] &&
+        myBoard[winCases[i][0]] === myBoard[winCases[i][2]]
       ) {
         return 'win';
       }
@@ -53,7 +53,7 @@ const Board = () => {
     target.innerHTML = type === 'x' ? cross : circle;
   };
 
-  return { spots, setIcon, checkWin };
+  return { spots, setIcon, checkWin, winCases };
 };
 
 const Players = () => {
@@ -98,23 +98,27 @@ const gameSetup = () => {
     ai
       ? (dom.ai.style.backgroundColor = '#ffee00')
       : (dom.ai.style.backgroundColor = '');
+    dom.name_input[1].disabled = ai;
+    ai
+      ? (dom.name_input[1].value = 'Computer')
+      : (dom.name_input[1].value = dom.name_input[1].defaultValue);
   }
 
   function aiPlay() {
     let available = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     for (const spot in board.spots) {
       available.splice(available.indexOf(parseInt(spot)), 1);
-    }
-    console.log(available);
+    }    
+    
     let randomIndex = Math.floor(Math.random() * (available.length - 0) + 0);
     dom.boardSquare[available[randomIndex]].click();
   }
 
-  function makePlay(e) {    
+  function makePlay(e) {
     if (e.target.className !== 'board_spot' || e.target.innerHTML !== '')
       return;
     let currentPlayer = playerTurn ? players.p1 : players.p2;
-    playerTurn = !playerTurn;    
+    playerTurn = !playerTurn;
     board.setIcon(e.target, currentPlayer.icon);
     board.spots[e.target.id] = currentPlayer.icon;
     gameOver(board.checkWin(), currentPlayer.name);
