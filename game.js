@@ -1,14 +1,14 @@
 const dom = {
-  clearButton: document.getElementById('reset'),
-  boardSquare: document.querySelectorAll('.board_spot'),
-  board_HTML: document.getElementById('game_board'),
-  name_input: document.querySelectorAll('.player_in input'),
-  result_out: document.getElementById('footer'),
-  ai: document.getElementById('ai_toggle'),
+  clearButton: document.getElementById("reset"),
+  boardSquare: document.querySelectorAll(".board_spot"),
+  board_HTML: document.getElementById("game_board"),
+  name_input: document.querySelectorAll(".player_in input"),
+  result_out: document.getElementById("footer"),
+  ai: document.getElementById("ai_toggle"),
   clear: () => {
-    dom.boardSquare.forEach((sqr) => (sqr.innerHTML = ''));
-    dom.result_out.style.backgroundColor = '';
-    dom.clearButton.style.backgroundColor = '';
+    dom.boardSquare.forEach((sqr) => (sqr.innerHTML = ""));
+    dom.result_out.style.backgroundColor = "";
+    dom.clearButton.style.backgroundColor = "";
   },
 };
 
@@ -34,11 +34,11 @@ const Board = () => {
         myBoard[winCases[i][0]] === myBoard[winCases[i][1]] &&
         myBoard[winCases[i][0]] === myBoard[winCases[i][2]]
       ) {
-        return 'win';
+        return "win";
       }
-      if (plays === 9) {
-        return 'draw';
-      }
+    }
+    if (plays === 9) {
+      return "draw";
     }
   };
 
@@ -50,7 +50,7 @@ const Board = () => {
     const circle = `
       <div class="icon" id="circle"></div>
       `;
-    target.innerHTML = type === 'x' ? cross : circle;
+    target.innerHTML = type === "x" ? cross : circle;
   };
 
   return { spots, setIcon, checkWin, winCases };
@@ -59,25 +59,25 @@ const Board = () => {
 const Players = () => {
   const p1 = {
     name: dom.name_input[0].value,
-    icon: 'x',
+    icon: "x",
   };
   const p2 = {
     name: dom.name_input[1].value,
-    icon: 'o',
+    icon: "o",
   };
   const updateName = function () {
     p1.name = dom.name_input[0].value;
     p2.name = dom.name_input[1].value;
   };
   dom.name_input.forEach((x) =>
-    x.addEventListener('change', () => {
+    x.addEventListener("change", () => {
       updateName();
     })
   );
   return { p1, p2 };
 };
 
-const gameSetup = () => {
+(() => {
   const players = Players();
   let ai = false;
   let playerTurn;
@@ -87,20 +87,20 @@ const gameSetup = () => {
     dom.clear();
     board = Board();
     playerTurn = true;
-    dom.board_HTML.addEventListener('click', makePlay);
-    dom.clearButton.addEventListener('click', setUp);
-    dom.ai.addEventListener('click', aiToggle);
-    dom.result_out.innerText = 'Click a spot on the board to play!';
+    dom.board_HTML.addEventListener("click", makePlay);
+    dom.clearButton.addEventListener("click", setUp);
+    dom.ai.addEventListener("click", aiToggle);
+    dom.result_out.innerText = "Click a spot on the board to play!";
   })();
 
   function aiToggle() {
     ai = !ai;
     ai
-      ? (dom.ai.style.backgroundColor = '#ffee00')
-      : (dom.ai.style.backgroundColor = '');
+      ? (dom.ai.style.backgroundColor = "#ffee00")
+      : (dom.ai.style.backgroundColor = "");
     dom.name_input[1].disabled = ai;
     ai
-      ? (dom.name_input[1].value = 'Computer')
+      ? (dom.name_input[1].value = "Computer")
       : (dom.name_input[1].value = dom.name_input[1].defaultValue);
   }
 
@@ -108,35 +108,37 @@ const gameSetup = () => {
     let available = [0, 1, 2, 3, 4, 5, 6, 7, 8];
     for (const spot in board.spots) {
       available.splice(available.indexOf(parseInt(spot)), 1);
-    }    
-    
-    let randomIndex = Math.floor(Math.random() * (available.length - 0) + 0);
-    dom.boardSquare[available[randomIndex]].click();
+    }
+    let winIndex;
+    winIndex = Math.floor(Math.random() * (available.length - 0) + 0);
+    dom.boardSquare[available[winIndex]].click();
   }
 
   function makePlay(e) {
-    if (e.target.className !== 'board_spot' || e.target.innerHTML !== '')
+    if (e.target.className !== "board_spot" || e.target.innerHTML !== "")
       return;
     let currentPlayer = playerTurn ? players.p1 : players.p2;
     playerTurn = !playerTurn;
     board.setIcon(e.target, currentPlayer.icon);
     board.spots[e.target.id] = currentPlayer.icon;
-    gameOver(board.checkWin(), currentPlayer.name);
-    if (ai === true && playerTurn === false) aiPlay();
+    if (!gameOver(board.checkWin(), currentPlayer.name)) {
+      if (ai === true && playerTurn === false) aiPlay();
+    }
   }
 
   function gameOver(result, name) {
-    if (result === 'draw') {
+    if (result === "draw") {
       dom.result_out.innerText = "It's a draw. Reset to play again.";
-    } else if (result === 'win') {
+      dom.board_HTML.removeEventListener("click", makePlay);
+      return true;
+    } else if (result === "win") {
       dom.result_out.innerText = `${name} has won! Reset to play again.`;
-      dom.result_out.style.backgroundColor = '#ffee00';
-      dom.clearButton.style.backgroundColor = '#ffee00';
-      dom.board_HTML.removeEventListener('click', makePlay);
+      dom.result_out.style.backgroundColor = "#ffee00";
+      dom.clearButton.style.backgroundColor = "#ffee00";
+      dom.board_HTML.removeEventListener("click", makePlay);
+      return true;
     }
   }
 
   return { board, players };
-};
-
-let myGame = gameSetup();
+})();
